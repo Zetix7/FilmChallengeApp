@@ -2,10 +2,10 @@
 
 public class Statistics
 {
-    public float Min { get; set; }
-    public float Max { get; set; }
-    public float Average { get; set; }
-    public float AverageLetter { get; set; }
-    public float Sum { get; set; }
-    public float Count { get; set; }
+    public int Min { get; set; } = 100;
+    public int Max { get; set; } = 0;
+    public float Average { get; set; } = 0;
+    public char AverageLetter { get; set; } = 'X';
+    public int Sum { get; set; } = 0;
+    public int Count { get; set; } = 0;
 }

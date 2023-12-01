@@ -15,7 +15,7 @@ public class Film
 
     public void AddGrade(int grade)
     {
-        if (grade >=1 && grade <= 100)
+        if (grade >= 1 && grade <= 100)
         {
             _grades.Add(grade);
         }
@@ -45,5 +45,41 @@ public class Film
     {
         var intResult = (int)Math.Round(grade);
         AddGrade(intResult);
+    }
+
+    public Statistics GetStatistics()
+    {
+        var statistics = new Statistics();
+
+        foreach (var grade in _grades)
+        {
+            statistics.Min = Math.Min(statistics.Min, grade);
+            statistics.Max = Math.Max(statistics.Max, grade);
+            statistics.Sum += grade;
+            statistics.Count++;
+        }
+
+        statistics.Average = (float)Math.Round((float)statistics.Sum / statistics.Count, 2);
+
+        switch (statistics.Average)
+        {
+            case var average when average > 80:
+                statistics.AverageLetter = 'A';
+                break;
+            case var average when average > 60:
+                statistics.AverageLetter = 'B';
+                break;
+            case var average when average > 40:
+                statistics.AverageLetter = 'C';
+                break;
+            case var average when average > 20:
+                statistics.AverageLetter = 'D';
+                break;
+            default:
+                statistics.AverageLetter = 'E';
+                break;
+        }
+
+        return statistics;
     }
 }
