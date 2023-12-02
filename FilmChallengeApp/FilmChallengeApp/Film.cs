@@ -35,6 +35,10 @@ public class Film
         {
             AddGrade(floatResult);
         }
+        else if (grade.Length == 1)
+        {
+            AddGrade(grade[0]);
+        }
         else
         {
             throw new FormatException($"Invalid value: '{grade}'! Value is not int.");
@@ -47,37 +51,35 @@ public class Film
         AddGrade(intResult);
     }
 
+    public void AddGrade(char grade)
+    {
+        switch (grade)
+        {
+            case 'A' or 'a':
+                AddGrade(100);
+                break;
+            case 'B' or 'b':
+                AddGrade(80);
+                break;
+            case 'C' or 'c':
+                AddGrade(60);
+                break;
+            case 'D' or 'd':
+                AddGrade(40);
+                break;
+            case 'E' or 'e':
+                AddGrade(20);
+                break;
+        }
+    }
+
     public Statistics GetStatistics()
     {
         var statistics = new Statistics();
 
         foreach (var grade in _grades)
         {
-            statistics.Min = Math.Min(statistics.Min, grade);
-            statistics.Max = Math.Max(statistics.Max, grade);
-            statistics.Sum += grade;
-            statistics.Count++;
-        }
-
-        statistics.Average = (float)Math.Round((float)statistics.Sum / statistics.Count, 2);
-
-        switch (statistics.Average)
-        {
-            case var average when average > 80:
-                statistics.AverageLetter = 'A';
-                break;
-            case var average when average > 60:
-                statistics.AverageLetter = 'B';
-                break;
-            case var average when average > 40:
-                statistics.AverageLetter = 'C';
-                break;
-            case var average when average > 20:
-                statistics.AverageLetter = 'D';
-                break;
-            default:
-                statistics.AverageLetter = 'E';
-                break;
+            statistics.AddGrade(grade);
         }
 
         return statistics;
