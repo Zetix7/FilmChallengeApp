@@ -6,12 +6,19 @@ var film = AddFilm();
 
 AddGrade(film);
 
-var statistics = film.GetStatistics();
-Console.WriteLine($"Statistics for {film.Title} ({film.Year}):");
-Console.WriteLine($"\tMin added grade: {statistics.Min}");
-Console.WriteLine($"\tMax added grade: {statistics.Max}");
-Console.WriteLine($"\tAverage of all grades: {statistics.Average}");
-Console.WriteLine($"\tAverage Letter shows quality of movie: {statistics.AverageLetter}");
+try
+{
+    var statistics = film.GetStatistics();
+    Console.WriteLine($"Statistics for {film.Title} ({film.Year}):");
+    Console.WriteLine($"\tMin added grade: {statistics.Min}");
+    Console.WriteLine($"\tMax added grade: {statistics.Max}");
+    Console.WriteLine($"\tAverage of all grades: {statistics.Average}");
+    Console.WriteLine($"\tAverage Letter shows quality of movie: {statistics.AverageLetter}");
+}
+catch (FileNotFoundException fe)
+{
+    Console.WriteLine(fe.Message);
+}
 
 static FilmInFile AddFilm()
 {
@@ -53,6 +60,10 @@ static void AddGrade(FilmInFile film)
         catch (ArgumentException ae)
         {
             Console.WriteLine(ae.Message);
+        }
+        catch (FileNotFoundException fe)
+        {
+            Console.WriteLine(fe.Message);
         }
     } while (true);
 }
