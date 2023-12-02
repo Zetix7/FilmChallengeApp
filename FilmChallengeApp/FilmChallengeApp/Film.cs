@@ -1,19 +1,14 @@
 ﻿namespace FilmChallengeApp;
 
-public class Film
+public class Film : BaseFilm
 {
     private readonly List<int> _grades = new();
 
-    public Film(string title, int year)
+    public Film(string title, int year) : base(title, year)
     {
-        Title = title;
-        Year = year;
     }
 
-    public string Title { get; set; }
-    public int Year { get; set; }
-
-    public void AddGrade(int grade)
+    public override void AddGrade(int grade)
     {
         if (grade >= 1 && grade <= 100)
         {
@@ -25,7 +20,7 @@ public class Film
         }
     }
 
-    public void AddGrade(string grade)
+    public override void AddGrade(string grade)
     {
         if (int.TryParse(grade, out int intResult))
         {
@@ -45,13 +40,13 @@ public class Film
         }
     }
 
-    public void AddGrade(float grade)
+    public override void AddGrade(float grade)
     {
         var intResult = (int)Math.Round(grade);
         AddGrade(intResult);
     }
 
-    public void AddGrade(char grade)
+    public override void AddGrade(char grade)
     {
         switch (grade)
         {
@@ -75,7 +70,7 @@ public class Film
         }
     }
 
-    public Statistics GetStatistics()
+    public override Statistics GetStatistics()
     {
         var statistics = new Statistics();
 
