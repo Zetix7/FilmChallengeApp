@@ -1,10 +1,10 @@
 ﻿namespace FilmChallengeApp;
 
-public class Film : FilmBase
+public class FilmInMemory : FilmBase
 {
     private readonly List<int> _grades = new();
 
-    public Film(string title, int year) : base(title, year)
+    public FilmInMemory(string title, int year) : base(title, year)
     {
     }
 

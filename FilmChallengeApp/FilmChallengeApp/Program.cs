@@ -13,7 +13,7 @@ Console.WriteLine($"\tMax added grade: {statistics.Max}");
 Console.WriteLine($"\tAverage of all grades: {statistics.Average}");
 Console.WriteLine($"\tAverage Letter shows quality of movie: {statistics.AverageLetter}");
 
-static Film AddFilm()
+static FilmInFile AddFilm()
 {
     Console.Write("\tInsert title of movie: ");
     var title = Console.ReadLine();
@@ -23,7 +23,7 @@ static Film AddFilm()
     {
         if (int.TryParse(year, out int intYear))
         {
-            return new Film(title, int.Parse(year));
+            return new FilmInFile(title, int.Parse(year));
         }
         Console.WriteLine("\t\tWrong year! Try again...");
         Console.Write("\tInsert year of movie again: ");
@@ -31,7 +31,7 @@ static Film AddFilm()
     } while (true);
 }
 
-static void AddGrade(Film film)
+static void AddGrade(FilmInFile film)
 {
     do
     {
