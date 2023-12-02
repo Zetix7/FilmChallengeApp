@@ -2,7 +2,13 @@
 
 Console.WriteLine("Welcome in Rating Movie Program!\n");
 
-var film = new Film("Iron Man", 2008);
+
+Console.Write("\tInsert title of movie: ");
+var title = Console.ReadLine();
+Console.Write("\tInsert year of movie: ");
+var year = Console.ReadLine();
+
+var film = new Film(title, int.Parse(year));
 
 do
 {

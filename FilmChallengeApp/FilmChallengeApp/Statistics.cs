@@ -19,7 +19,7 @@ public class Statistics
     {
         get
         {
-            return Sum / Count;
+            return (float)Math.Round((float)Sum / Count, 2);
         }
     }
 
