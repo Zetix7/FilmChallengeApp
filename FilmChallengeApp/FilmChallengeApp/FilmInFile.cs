@@ -27,6 +27,25 @@ public class FilmInFile : FilmBase
 
     public override Statistics GetStatistics()
     {
-        throw new NotImplementedException();
+        var statistics = new Statistics();
+
+        if(File.Exists(fullFileName))
+        {
+            using(var reader = File.OpenText(fullFileName))
+            {
+                var line = reader.ReadLine();
+                while(line != null)
+                {
+                    statistics.AddGrade(int.Parse(line));
+                    line = reader.ReadLine();
+                }
+            }
+        }
+        else
+        {
+            throw new FileNotFoundException($"File '{fullFileName}' not found!");
+        }
+
+        return statistics;
     }
 }
