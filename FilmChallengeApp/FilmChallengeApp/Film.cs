@@ -2,7 +2,7 @@
 
 public class Film
 {
-    private List<int> _grades = new();
+    private readonly List<int> _grades = new();
 
     public Film(string title, int year)
     {
@@ -70,6 +70,8 @@ public class Film
             case 'E' or 'e':
                 AddGrade(20);
                 break;
+            default:
+                throw new FormatException($"Invalid value: '{grade}'! Correct range of values 'a' - 'e' or 'A' - 'E'.");
         }
     }
 
