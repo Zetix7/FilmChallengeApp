@@ -20,8 +20,15 @@ public class Film : FilmBase
         }
     }
 
-    public Statistics GetStatistics()
+    public override Statistics GetStatistics()
     {
-        return base.GetStatistics(_grades);
+        var statistics = new Statistics();
+
+        foreach (var grade in _grades)
+        {
+            statistics.AddGrade(grade);
+        }
+
+        return statistics;
     }
 }

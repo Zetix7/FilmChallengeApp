@@ -1,6 +1,6 @@
 ﻿namespace FilmChallengeApp;
 
-public abstract class FilmBase
+public abstract class FilmBase : IFilm
 {
     public FilmBase(string title, int year)
     {
@@ -63,15 +63,5 @@ public abstract class FilmBase
         }
     }
 
-    public virtual Statistics GetStatistics(List<int> grades)
-    {
-        var statistics = new Statistics();
-
-        foreach (var grade in grades)
-        {
-            statistics.AddGrade(grade);
-        }
-
-        return statistics;
-    }
+    public abstract Statistics GetStatistics();
 }
