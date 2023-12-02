@@ -23,13 +23,12 @@ static Film AddFilm()
     {
         if (int.TryParse(year, out int intYear))
         {
-            break;
+            return new Film(title, int.Parse(year));
         }
         Console.WriteLine("\t\tWrong year! Try again...");
         Console.Write("\tInsert year of movie again: ");
         year = Console.ReadLine();
     } while (true);
-    return new Film(title, int.Parse(year));
 }
 
 static void AddGrade(Film film)
