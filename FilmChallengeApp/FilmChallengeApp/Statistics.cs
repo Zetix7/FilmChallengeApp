@@ -37,8 +37,10 @@ public class Statistics
                     return 'C';
                 case var average when average > 20:
                     return 'D';
-                default:
+                case var average when average > 0:
                     return 'E';
+                default:
+                    return 'X';
             }
         }
     }
