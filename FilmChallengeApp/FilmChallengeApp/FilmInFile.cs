@@ -3,7 +3,7 @@
 public class FilmInFile : FilmBase
 {
     private const string FILENAME="_grades.txt";
-    private string fullFileName;
+    private readonly string fullFileName;
 
     public FilmInFile(string title, int year) : base(title, year)
     {
