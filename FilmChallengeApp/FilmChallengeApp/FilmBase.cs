@@ -35,8 +35,8 @@ public abstract class FilmBase : IFilm
 
     public void AddGrade(float grade)
     {
-        var intResult = (int)Math.Round(grade);
-        AddGrade(intResult);
+        var result = (int)Math.Round(grade);
+        AddGrade(result);
     }
 
     public void AddGrade(char grade)
@@ -61,6 +61,24 @@ public abstract class FilmBase : IFilm
             default:
                 throw new FormatException($"Invalid value: '{grade}'! Correct range of values 'a' - 'e' or 'A' - 'E'.");
         }
+    }
+
+    public void AddGrade(double grade)
+    {
+        var result = (int)Math.Round(grade);
+        AddGrade(result);
+    }
+
+    public void AddGrade(decimal grade)
+    {
+        var result = (int)Math.Round(grade);
+        AddGrade(result);
+    }
+
+    public void AddGrade(long grade)
+    {
+        var result = (int)grade;
+        AddGrade(result);
     }
 
     public abstract Statistics GetStatistics();
